@@ -19,7 +19,7 @@ body {
     padding: 10px 5px 0px 5px;
     border-radius: 20px 20px 0px 0px;
     background-color: #232427;
-    z-index: 1;
+    z-index: 2;
 }
 
 .lista-links {
@@ -112,6 +112,12 @@ footer {
 
 .form-search .input-group {
     width: 90%;
+}
+
+@media (min-width: 560px) {
+    .form-search .input-group {
+        width: 514px;
+    }
 }
 
 @media (min-width: 730px) {
