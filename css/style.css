@@ -50,6 +50,8 @@ button.abrir ~ .lista-links li {
 }
 
 section.cumprimentar {
+    position: absolute;
+    top: 120px;
     width: fit-content;
     width: -moz-fit-content;
     display: grid;
@@ -58,7 +60,6 @@ section.cumprimentar {
     background: #00000080;
     border-radius: 20px;
     z-index: 1;
-    margin-top: -390px;
 }
 
 .cumprimentar * {
