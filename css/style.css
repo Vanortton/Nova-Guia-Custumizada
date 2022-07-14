@@ -111,6 +111,7 @@ footer {
 
 .form-search .input-group {
     width: 600px;
+    max-width: 90%;
 }
 
 .form-search .input-group > .form-control {
