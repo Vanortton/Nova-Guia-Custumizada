@@ -111,6 +111,11 @@ footer {
 }
 
 .form-search .input-group {
-    width: 600px;
-    max-width: 90%;
+    width: 90%;
+}
+
+@media (min-width: 730px) {
+    .form-search .input-group {
+        max-width: 600px;
+    }
 }
