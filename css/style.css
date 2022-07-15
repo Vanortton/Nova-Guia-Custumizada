@@ -20,10 +20,12 @@ body {
 }
 
 .lista-links {
+    max-height: 500px;
     transition: .5s;
     position: absolute;
     background: rgb(35, 36, 39);
     padding: 0px 17.5px;
+    overflow-y: auto;
     left: 0px;
     top: 53px;
     width: inherit;
