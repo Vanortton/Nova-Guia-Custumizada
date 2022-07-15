@@ -26,6 +26,7 @@ body {
     background: rgb(35, 36, 39);
     padding: 0px 17.5px;
     overflow-y: auto;
+    overflow-x: hidden;
     left: 0px;
     top: 53px;
     width: inherit;
