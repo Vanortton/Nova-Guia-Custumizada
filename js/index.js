@@ -1,7 +1,5 @@
 let acessarNome = valor_cookie('nome')
 let nome = acessarNome
-console.log(acessarNome)
-console.log(nome)
 
 if (acessarNome === null || acessarNome === false) {
     nome = window.prompt("Digite seu nome:")
@@ -34,6 +32,9 @@ function valor_cookie(nome_cookie) {
 }
 
 cria_cookie('nome', nome)
+
+console.log(acessarNome)
+console.log(nome)
 
 const menuTop = document.querySelector('[menu-top]')
 $('.links-rapidos').css({ 'background-color': '#00000000', 'padding': '2px 10px', 'margin-top': '0px', 'width': '70px' })
