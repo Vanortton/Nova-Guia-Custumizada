@@ -1,15 +1,50 @@
+let acessarNome = valor_cookie('nome')
+let nome = acessarNome
+
+if (acessarNome === null || acessarNome === false) {
+    nome = window.prompt("Digite seu nome:")
+}
+
+function cria_cookie(nome, valor) {
+    var data = new Date(2023, 0, 01)
+    data = data.toGMTString()
+    valor = encodeURI(valor)
+    document.cookie = nome + '=' + valor + '; expires=' + data + '; path=/';
+}
+
+function apaga_cookie(nome) {
+    var data = new Date(2010, 0, 01)
+    data = data.toGMTString()
+    document.cookie = nome + '=; expires=' + data + '; path=/'
+}
+
+function valor_cookie(nome_cookie) {
+    var cname = ' ' + nome_cookie + '='
+    var cookies = document.cookie
+
+    if (cookies.indexOf(cname) == -1) return false
+    cookies = cookies.substr(cookies.indexOf(cname), cookies.length)
+
+    if (cookies.indexOf(';') != -1) cookies = cookies.substr(0, cookies.indexOf(';'))
+    cookies = cookies.split('=')[1]
+
+    return decodeURI(cookies)
+}
+
+cria_cookie('nome', nome)
+
 const menuTop = document.querySelector('[menu-top]')
-$('.links-rapidos').css({ 'background-color': '#00000000', 'padding': '2px 10px', 'margin-top': '0px', 'width': '70px' } )
+$('.links-rapidos').css({ 'background-color': '#00000000', 'padding': '2px 10px', 'margin-top': '0px', 'width': '70px' })
 menuTop.onclick = () => {
     if ($(menuTop).hasClass('abrir')) {
-        $('.links-rapidos').css({ 'background-color': '#232427', 'padding': '10px 10px 5px 10px', 'margin-top': '-2px', 'width': '200px' } )
+        $('.links-rapidos').css({ 'background-color': '#232427', 'padding': '10px 10px 5px 10px', 'margin-top': '-2px', 'width': '200px' })
         $(menuTop).removeClass('abrir'); $(menuTop).addClass('fechar')
         $('.links-rapidos').addClass('col-4'); $('.links-rapidos').removeClass('col-2')
         $(menuTop).addClass('py-1'); $(menuTop).removeClass('py-0')
         menuTop.innerHTML = '<svg class="mt-1" viewBox="0 0 172 172" width="18px" height="18px"><g fill="#ffffff"><path d="M107.33488,86l46.8872,-70.3308c0.70176,-1.05608 0.77056,-2.41144 0.172,-3.52944c-0.59856,-1.118 -1.76472,-1.81976 -3.03408,-1.81976h-25.2496c-1.12488,0 -2.18096,0.5504 -2.82424,1.47576l-37.28616,53.56424l-37.2896,-53.56424c-0.64328,-0.92536 -1.69592,-1.47576 -2.8208,-1.47576h-25.2496c-1.26936,0 -2.43552,0.69832 -3.03408,1.81632c-0.59856,1.118 -0.52976,2.4768 0.172,3.52944l46.8872,70.33424l-46.8872,70.3308c-0.70176,1.05608 -0.77056,2.41144 -0.172,3.52944c0.59856,1.118 1.76472,1.81976 3.03408,1.81976h25.2496c1.12488,0 2.18096,-0.5504 2.82424,-1.47576l37.28616,-53.56424l37.2896,53.56424c0.64328,0.92536 1.69592,1.47576 2.8208,1.47576h25.2496c1.26936,0 2.43552,-0.69832 3.03408,-1.81632c0.59856,-1.118 0.52976,-2.4768 -0.172,-3.52944z"></path></g></svg>'
     } else {
         $('.links-rapidos').addClass('col-2'); $('.links-rapidos').removeClass('col-4')
-        $('.links-rapidos').css({ 'background-color': '#00000000', 'padding': '2px 10x', 'margin-top': '0px', 'width': '70px' } )
+        $('.links-rapidos').css({ 'background-color': '#00000000', 'padding': '2px 10x', 'margin-top': '0px', 'width': '70px' })
         $(menuTop).removeClass('fechar'); $(menuTop).addClass('abrir')
         $(menuTop).addClass('py-0'); $(menuTop).removeClass('py-1')
         menuTop.innerHTML = '<svg class="mt-1" viewBox="0 0 172 172" width="22px" height="24px"><g fill="#ffffff"><path d="M14.33333,35.83333v14.33333h143.33333v-14.33333zM14.33333,78.83333v14.33333h143.33333v-14.33333zM14.33333,121.83333v14.33333h143.33333v-14.33333z"></path></g></svg>'
@@ -58,7 +93,7 @@ function momentoDoDia(hora) {
 
 function cumprimentar() {
     const momentoDia = momentoDoDia(new Date().getHours())
-    const cumprimentacao = `${momentoDia}, Vanorton.`
+    const cumprimentacao = `${momentoDia}, ${acessarNome}.`
     const paragrafo = document.querySelector('p.cumprimentacao')
     const divSvgMomento = document.querySelector('div.svgMomento')
     paragrafo.innerHTML = cumprimentacao
