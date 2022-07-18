@@ -1,5 +1,7 @@
 let acessarNome = valor_cookie('nome')
 let nome = acessarNome
+console.log(acessarNome)
+console.log(nome)
 
 if (acessarNome === null || acessarNome === false) {
     nome = window.prompt("Digite seu nome:")
