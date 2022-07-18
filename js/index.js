@@ -1,41 +1,3 @@
-let acessarNome = valor_cookie('nome')
-let nome = acessarNome
-
-if (acessarNome === null || acessarNome === false) {
-    nome = window.prompt("Digite seu nome:")
-}
-
-function cria_cookie(nome, valor) {
-    var data = new Date(2023, 0, 01)
-    data = data.toGMTString()
-    valor = encodeURI(valor)
-    document.cookie = nome + '=' + valor + '; expires=' + data + '; path=/';
-}
-
-function apaga_cookie(nome) {
-    var data = new Date(2010, 0, 01)
-    data = data.toGMTString()
-    document.cookie = nome + '=; expires=' + data + '; path=/'
-}
-
-function valor_cookie(nome_cookie) {
-    var cname = ' ' + nome_cookie + '='
-    var cookies = document.cookie
-
-    if (cookies.indexOf(cname) == -1) return false
-    cookies = cookies.substr(cookies.indexOf(cname), cookies.length)
-
-    if (cookies.indexOf(';') != -1) cookies = cookies.substr(0, cookies.indexOf(';'))
-    cookies = cookies.split('=')[1]
-
-    return decodeURI(cookies)
-}
-
-cria_cookie('nome', nome)
-
-console.log(acessarNome)
-console.log(nome)
-
 const menuTop = document.querySelector('[menu-top]')
 $('.links-rapidos').css({ 'background-color': '#00000000', 'padding': '2px 10px', 'margin-top': '0px', 'width': '70px' })
 menuTop.onclick = () => {
@@ -96,7 +58,7 @@ function momentoDoDia(hora) {
 
 function cumprimentar() {
     const momentoDia = momentoDoDia(new Date().getHours())
-    const cumprimentacao = `${momentoDia}, ${acessarNome}.`
+    const cumprimentacao = `${momentoDia}, User.`
     const paragrafo = document.querySelector('p.cumprimentacao')
     const divSvgMomento = document.querySelector('div.svgMomento')
     paragrafo.innerHTML = cumprimentacao
